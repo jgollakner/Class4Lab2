@@ -1,9 +1,10 @@
 <%-- 
-    Document   : areaForm
-    Created on : Feb 5, 2013, 4:53:59 PM
+    Document   : thirdSideForm
+    Created on : Feb 5, 2013, 4:57:56 PM
     Author     : JoeGollakner
 --%>
 
+<%@page import="java.text.DecimalFormat"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,41 +13,40 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
     <body>
-        <div>Enter Length and Width!</div>
-
+        <div>Enter the 2 known triangle dimensions!</div>
+        
         <p><button onclick="window.location.href='index.jsp'">Go Back</button></p>
-
-
+        
         <script type="text/javascript">
             function validateForm()
             {
-                var l = document.forms["form1"]["length"].value;
-                var w = document.forms["form1"]["width"].value;
+                var a = document.forms["form1"]["sideA"].value;
+                var b = document.forms["form1"]["sideB"].value;
                 var notANum = "Please enter a valid number";
                 var blankNum = "Field Cannot be blank"
                 var outOfRange = "Enter a number between 1-500";
                 
-                if (l==""){
+                if (a==""){
                     window.alert(blankNum);
                     return false;
                 }
-                if (isNaN(l)){
+                if (isNaN(a)){
                     window.alert(notANum);
                     return false;
                 }
-                if (l<1||l>500){
+                if (a<1||a>500){
                     window.alert(outOfRange);
                     return false;
                 }
-                if (w==""){
+                if (b==""){
                     window.alert(blankNum);
                     return false;
                 }
-                if (isNaN(w)){
+                if (isNaN(b)){
                     window.alert(notANum);
                     return false;
                 }
-                if (w<1||w>500){
+                if (b<1||b>500){
                     window.alert(outOfRange);
                     return false;
                 }
@@ -55,33 +55,30 @@
             
         </script>
         
-        <form id="form1" name="form1" method="POST" action="SelectArea.do" onsubmit="return validateForm()">
-            Length: <input type="text" name="length"><br>
-            Width: <input type="text" name="width">
-            
-            
-           
+        <form id="form1" name="form1" method="POST" action="TriangleArea.do" onsubmit="return validateForm()">
+            Side 1: <input type="text" name="sideA"><br>
+            Side 2: <input type="text" name="sideB">
+        
         <center>
                 <input id="areaSubmit" name="areaSubmit" type="submit" value="Get Area">
             </center>
         
         </form>
         
-         <h1>Here are the results of your Area Calculation!</h1>
-
-
+        
+        <h1>Here is the length of the missing side!</h1>
+        
         <p>
-            <%
-
-                //Object area = request.getParameter("area");
-
-
-                Object output = request.getAttribute("area".toString());
-                out.print("Area: " + output);
+            <%    
+            out.println("Side 1: " + request.getParameter("sideA"));
+            out.println("</br>Side 2: " + request.getParameter("sideB"));
+            
+            Object output = request.getAttribute("area");
+            DecimalFormat df = new DecimalFormat("#.###");
+            out.print("</br>Missing Side: " + df.format(output));
+            
             %>
         </p>
-        
-        
         
     </body>
 </html>

@@ -9,9 +9,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>+-*/ Math Calculations /*-+</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+
+            <p>Please select the calculation you wish to perform!</p>   
+            <button onclick="window.location.href='areaForm.jsp'">Area of a Rectangle</button>
+            <button onclick="window.location.href='circleAreaForm.jsp'">Area of a Circle</button>
+            <button onclick="window.location.href='thirdSideForm.jsp'">Find the Missing Side of a Triangle</button>
+    
+</body>
 </html>
