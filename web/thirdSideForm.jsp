@@ -14,9 +14,9 @@
     </head>
     <body>
         <div>Enter the 2 known triangle dimensions!</div>
-        
+
         <p><button onclick="window.location.href='index.jsp'">Go Back</button></p>
-        
+
         <script type="text/javascript">
             function validateForm()
             {
@@ -54,31 +54,37 @@
             }
             
         </script>
-        
+
         <form id="form1" name="form1" method="POST" action="TriangleArea.do" onsubmit="return validateForm()">
             Side 1: <input type="text" name="sideA"><br>
             Side 2: <input type="text" name="sideB">
-        
-        <center>
+
+            <center>
                 <input id="areaSubmit" name="areaSubmit" type="submit" value="Get Area">
             </center>
-        
+
         </form>
-        
-        
+
+
         <h1>Here is the length of the missing side!</h1>
-        
+
         <p>
-            <%    
-            out.println("Side 1: " + request.getParameter("sideA"));
-            out.println("</br>Side 2: " + request.getParameter("sideB"));
-            
-            Object output = request.getAttribute("area");
-            DecimalFormat df = new DecimalFormat("#.###");
-            out.print("</br>Missing Side: " + df.format(output));
-            
+            <%
+                out.println("Side 1: " + request.getParameter("sideA"));
+                out.println("</br>Side 2: " + request.getParameter("sideB"));
+
+                Object output = request.getAttribute("area");
+                double area = 0;
+                if (output != null) {
+                    area = (Double) output;
+                    DecimalFormat df = new DecimalFormat("#.###");
+                    out.print("</br>Missing Side: " + df.format(area));
+                } else {
+
+                    out.println("Data is null, input is bad!");
+                }
             %>
         </p>
-        
+
     </body>
 </html>

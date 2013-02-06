@@ -57,8 +57,15 @@
             <%
 
                 Object output = request.getAttribute("area");
-                DecimalFormat df = new DecimalFormat("#.###");
-                out.print("Area of your circle: " + (df.format(output)));
+                double area = 0;
+                if(output != null) {
+                    area = (Double)output;
+                    DecimalFormat df = new DecimalFormat("#.###");
+                    out.print("Area of your circle: " + (df.format(area)));
+                } else {
+                    out.println("Sorry, cannot compute, bad data input");
+                }
+                
 
             %>
         </p>
