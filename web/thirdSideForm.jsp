@@ -78,10 +78,11 @@
                 if (output != null) {
                     area = (Double) output;
                     DecimalFormat df = new DecimalFormat("#.###");
-                    out.print("</br>Missing Side: " + df.format(area));
+                    out.println("</br>");
+                    out.println("</br>Missing Side: " + df.format(area));
                 } else {
 
-                    out.println("Data is null, input is bad!");
+                    out.println("Submit your answer for a result!");
                 }
             %>
         </p>

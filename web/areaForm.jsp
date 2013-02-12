@@ -72,10 +72,6 @@
 
         <p>
             <%
-
-                //Object area = request.getParameter("area");
-
-
                 Object output = request.getAttribute("area".toString());
                 out.print("Area: " + output);
             %>

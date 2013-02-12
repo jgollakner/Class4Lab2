@@ -63,7 +63,7 @@
                     DecimalFormat df = new DecimalFormat("#.###");
                     out.print("Area of your circle: " + (df.format(area)));
                 } else {
-                    out.println("Sorry, cannot compute, bad data input");
+                    out.println("Submit your data for the result!");
                 }
                 
 
